@@ -17,6 +17,9 @@ from train_baller2vecplusplus import init_basketball_datasets, init_model
 
 colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
 
+home_relative_path = "/Desktop/thesis2024/baller2vecplusplus"
+home_dir =  os.path.join(os.path.expanduser("~"), home_relative_path.lstrip('/'))
+
 shuffle_keys = [
     "player_idxs",
     "player_xs",
@@ -147,7 +150,6 @@ def animate_toy_examples():
     player_traj_n = ds.player_traj_n
     seq_len = ds.seq_len
 
-    home_dir = os.path.expanduser("~")
     os.makedirs(f"{home_dir}/results", exist_ok=True)
 
     tensors = ds[0]
@@ -377,7 +379,6 @@ def plot_generated_trajectories():
     models = {"baller2vec": "20230927101037", "baller2vec++": "20230927101037"}
     samples = 3
     device = torch.device("cuda:0")
-    home_dir = os.path.expanduser("~")
     os.makedirs(f"{home_dir}/results", exist_ok=True)
     for (which_model, JOB) in models.items():
         JOB_DIR = f"{EXPERIMENTS_DIR}/{JOB}"
@@ -479,7 +480,6 @@ def compare_single_player_generation():
     models = {"baller2vec": "20230927101037", "baller2vec++": "20230927101037"}
     samples = 10
     device = torch.device("cuda:0")
-    home_dir = os.path.expanduser("~")
     os.makedirs(f"{home_dir}/results", exist_ok=True)
     for (which_model, JOB) in models.items():
         print(which_model)
@@ -701,7 +701,6 @@ def test_permutation_invariance():
 
     print(np.mean(avg_diffs))
     df = pd.DataFrame(data)
-    home_dir = os.path.expanduser("~")
     df.to_csv(f"{home_dir}/results.csv")
     print(np.abs(df["anchor"] - df["shuffled"]).mean())
 
@@ -802,7 +801,6 @@ def get_diff_for_each_seq():
         seq_len = model.seq_len
         models[which_model] = model
 
-    home_dir = os.path.expanduser("~")
     os.makedirs(f"{home_dir}/results", exist_ok=True)
 
     criterion = nn.CrossEntropyLoss()
@@ -836,5 +834,4 @@ def get_diff_for_each_seq():
     shutil.make_archive(f"{home_dir}/results", "zip", f"{home_dir}/results")
     shutil.rmtree(f"{home_dir}/results")
 
-if __name__ == "__main__":
-    plot_generated_trajectories()
+compare_single_player_generation()

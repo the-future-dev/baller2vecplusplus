@@ -51,6 +51,6 @@ fi
 mkdir -p ${EXPERIMENTS_DIR}/${JOB}
 mv ${JOB}.yaml ${EXPERIMENTS_DIR}/${JOB}/
 
-gpu=0
+gpu=1
 cd ${PROJECT_DIR}
 nohup python3 train_baller2vecplusplus.py ${JOB} ${gpu} > ${EXPERIMENTS_DIR}/${JOB}/train.log &
