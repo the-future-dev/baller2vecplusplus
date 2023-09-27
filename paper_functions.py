@@ -163,7 +163,8 @@ def animate_toy_examples():
         f"{home_dir}/results/train.png",
     )
 
-    for JOB in ["20210408161424", "20210408160343"]:
+    # for JOB in ["20210408161424", "20210408160343"]:
+    for JOB in ["20230927101037"]:
         JOB_DIR = f"{EXPERIMENTS_DIR}/{JOB}"
         opts = yaml.safe_load(open(f"{JOB_DIR}/{JOB}.yaml"))
 
@@ -373,7 +374,7 @@ def gen_tgt_imgs_from_basketball_sample(tensors, seq_len, tgt_idx):
 
 
 def plot_generated_trajectories():
-    models = {"baller2vec": "20210402111942", "baller2vec++": "20210402111956"}
+    models = {"baller2vec": "20230927101037", "baller2vec++": "20230927101037"}
     samples = 3
     device = torch.device("cuda:0")
     home_dir = os.path.expanduser("~")
@@ -475,7 +476,7 @@ def plot_generated_trajectories():
 
 
 def compare_single_player_generation():
-    models = {"baller2vec": "20210402111942", "baller2vec++": "20210402111956"}
+    models = {"baller2vec": "20230927101037", "baller2vec++": "20230927101037"}
     samples = 10
     device = torch.device("cuda:0")
     home_dir = os.path.expanduser("~")
@@ -588,7 +589,7 @@ def compare_single_player_generation():
 
 
 def compare_time_steps():
-    models = {"baller2vec": "20210402111942", "baller2vec++": "20210402111956"}
+    models = {"baller2vec": "20230927101037", "baller2vec++": "20230927101037"}
     results = {}
     device = torch.device("cuda:0")
     for (which_model, JOB) in models.items():
@@ -645,7 +646,7 @@ def compare_time_steps():
 
 
 def test_permutation_invariance():
-    JOB = "20210402111956"
+    JOB = "20230927101037"
     JOB_DIR = f"{EXPERIMENTS_DIR}/{JOB}"
 
     device = torch.device("cuda:0")
@@ -706,7 +707,7 @@ def test_permutation_invariance():
 
 
 def compare_player_beginning_end():
-    JOB = "20210402111956"
+    JOB = "20230927101037"
     JOB_DIR = f"{EXPERIMENTS_DIR}/{JOB}"
 
     device = torch.device("cuda:0")
@@ -782,7 +783,7 @@ def compare_player_beginning_end():
 
 def get_diff_for_each_seq():
     device = torch.device("cuda:0")
-    models = {"baller2vec": "20210402111942", "baller2vec++": "20210402111956"}
+    models = {"baller2vec": "20230927101037", "baller2vec++": "20230927101037"}
     for (which_model, JOB) in models.items():
         JOB_DIR = f"{EXPERIMENTS_DIR}/{JOB}"
 
@@ -834,3 +835,6 @@ def get_diff_for_each_seq():
 
     shutil.make_archive(f"{home_dir}/results", "zip", f"{home_dir}/results")
     shutil.rmtree(f"{home_dir}/results")
+
+if __name__ == "__main__":
+    plot_generated_trajectories()
