@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-JOB=$(date +%Y%m%d%H%M%S)
+#JOB=$(date +%Y%m%d%H%M%S)
+JOB="20230927175152"
 
 echo "train:" >> ${JOB}.yaml
 task=basketball  # "basketball" or "toy".
@@ -51,6 +52,6 @@ fi
 mkdir -p ${EXPERIMENTS_DIR}/${JOB}
 mv ${JOB}.yaml ${EXPERIMENTS_DIR}/${JOB}/
 
-gpu=1
+gpu=0
 cd ${PROJECT_DIR}
 nohup python3 train_baller2vecplusplus.py ${JOB} ${gpu} > ${EXPERIMENTS_DIR}/${JOB}/train.log &

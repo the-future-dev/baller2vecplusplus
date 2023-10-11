@@ -17,8 +17,7 @@ from train_baller2vecplusplus import init_basketball_datasets, init_model
 
 colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
 
-home_relative_path = "/Desktop/thesis2024/baller2vecplusplus"
-home_dir =  os.path.join(os.path.expanduser("~"), home_relative_path.lstrip('/'))
+home_dir = os.environ.get('PROJECT_DIR')
 
 shuffle_keys = [
     "player_idxs",
@@ -165,7 +164,6 @@ def animate_toy_examples():
         f"{home_dir}/results/train.png",
     )
 
-    # for JOB in ["20210408161424", "20210408160343"]:
     for JOB in ["20230927101037"]:
         JOB_DIR = f"{EXPERIMENTS_DIR}/{JOB}"
         opts = yaml.safe_load(open(f"{JOB_DIR}/{JOB}.yaml"))
@@ -834,4 +832,3 @@ def get_diff_for_each_seq():
     shutil.make_archive(f"{home_dir}/results", "zip", f"{home_dir}/results")
     shutil.rmtree(f"{home_dir}/results")
 
-compare_single_player_generation()

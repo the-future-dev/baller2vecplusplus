@@ -149,6 +149,7 @@ def train_model():
     # Continue training on a prematurely terminated model.
     try:
         model.load_state_dict(torch.load(f"{JOB_DIR}/best_params.pth"))
+        print("old parameters loaded!")
 
         try:
             state_dict = torch.load(f"{JOB_DIR}/optimizer.pth")
