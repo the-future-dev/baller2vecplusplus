@@ -184,13 +184,14 @@ nohup python3 train_baller2vecplusplus.py ${JOB} ${gpu} > ${EXPERIMENTS_DIR}/${J
 ```
 
 ### Generate Offensive Positions
-Post model training, the folder named experiments will house the model parameters in a file named best_params.pth.
+Post model training, the folder named experiments will house the model parameters in a file named `best_params.pth`.
 
 Setup Procedure:
 
-- Update the JOB variable within the simulate_offence_positions function found in offence.py, aligning it with the date-time of the experiment corresponding to the model you wish to simulate.
-- Adjust the samples variable to alter the number of simulations to be conducted with the identical defensive setup.
-- Change the test_idx variable to specify the defensive positions.
-- Execute offence.py by running the command python3 offence.py.
+- Update the `JOB` variable within the simulate_offence_positions function found in offence.py, aligning it with the date-time of the experiment corresponding to the model you wish to simulate: find it in the name of the folder corresponding to the training.
+- Change the `test_idx` variable to specify the positions you want to simulate.
+- Adjust the `samples` variable to alter the number of simulations to be conducted with the identical defensive setup.
+- Execute offence.py by running the command:
+> python3 offence.py
 - Assess the outcomes of the simulations.
 
